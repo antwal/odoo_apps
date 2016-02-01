@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_company_tree" model="ir.ui.view">
+            <field name="name">res.company.tree</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_tree" />
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="hostname"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_company_form" model="ir.ui.view">
+            <field name="name">res.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//sheet//group" position="after">
+                    <group col="4">
+                        <label for="hostname"/>
+                        <h1>
+                            <field name="hostname" />
+                        </h1>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
