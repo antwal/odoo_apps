@@ -20,7 +20,7 @@
 
 
 {
-    'name': 'Logo for multicompanies',
+    'name': 'Logo for multi companies',
     'summary': 'Allow load logo company by hostname',
     'version': '1.0.5',
     'category': 'web',
