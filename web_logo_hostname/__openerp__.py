@@ -22,7 +22,7 @@
 {
     'name': 'Logo for multi companies',
     'summary': 'Allow load logo company by hostname',
-    'version': '1.0.5',
+    'version': '1.0.6',
     'category': 'web',
     'author': "Antolini Walter",
     'website': 'http://www.antwal.name',
