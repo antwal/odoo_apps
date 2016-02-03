@@ -12,6 +12,7 @@ Changelog
   - Added changelog
   - Added description
   - Added documentation
+  - Added security file
 
 - Version 1.0.6
 
