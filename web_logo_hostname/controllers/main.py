@@ -55,7 +55,7 @@ class Binary(openerp.addons.web.controllers.main.Binary):
             http_host = request.httprequest.environ.get("HTTP_HOST")
             server_port = request.httprequest.environ.get("SERVER_PORT")
 
-            # wsgi test
+            # Working with standalone and reverse proxy (nginx, apache)
             if http_host:
                 hostname = http_host.replace(':'+server_port, '')
 

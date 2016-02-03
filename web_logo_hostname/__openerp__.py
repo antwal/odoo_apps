@@ -21,9 +21,9 @@
 
 {
     'name': 'Logo for multi companies',
-    'summary': 'Allow load logo company by hostname',
-    'version': '1.0.6',
-    'category': 'web',
+    'summary': 'Allow load company logo by domain name',
+    'version': '1.0.7',
+    'category': 'Extra Tools',
     'author': "Antolini Walter",
     'website': 'http://www.antwal.name',
     'license': 'AGPL-3',
