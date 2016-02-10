@@ -23,7 +23,7 @@
     'name': 'Logo for multi companies',
     'summary': 'Allow load company logo by domain name',
     'version': '1.0.7',
-    'category': 'Extra Tools',
+    'category': 'Technical Settings',
     'author': "Antolini Walter",
     'website': 'http://www.antwal.name',
     'license': 'AGPL-3',
