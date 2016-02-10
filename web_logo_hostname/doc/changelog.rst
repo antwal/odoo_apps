@@ -11,7 +11,8 @@ Changelog
   - Added Migration to 1.0.8
   - Allow multiple hostnames on each company
   - Moved view to Configuration page
-  - Added separate model for hostname
+  - Added separate model for hostnames
+  - Fixed get http_host function
 
 - Version 1.0.7
 
