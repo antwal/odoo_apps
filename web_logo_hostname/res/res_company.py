@@ -21,7 +21,15 @@
 
 from openerp import models, fields, api, _
 
+
+class res_company_hostname(models.Model):
+    _name = 'res.company.hostname'
+
+    hostname = fields.Char(string='Hostname')
+    company_id = fields.Many2one('res.company', string="Company")
+
+
 class res_company(models.Model):
     _inherit = 'res.company'
 
-    hostname = fields.Char(string='Hostname')
+    hostname_id = fields.One2many('res.company.hostname', 'company_id', string='Host names registered')

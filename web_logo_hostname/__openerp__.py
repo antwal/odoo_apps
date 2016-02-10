@@ -22,7 +22,7 @@
 {
     'name': 'Logo for multi companies',
     'summary': 'Allow load company logo by domain name',
-    'version': '1.0.7',
+    'version': '8.0.1.0.8',
     'category': 'Technical Settings',
     'author': "Antolini Walter",
     'website': 'http://www.antwal.name',
