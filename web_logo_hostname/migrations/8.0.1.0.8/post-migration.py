@@ -20,9 +20,6 @@
 
 
 def migrate(cr, version):
-
-    import pdb; pdb.set_trace()
-
     if not version:
         return
 
