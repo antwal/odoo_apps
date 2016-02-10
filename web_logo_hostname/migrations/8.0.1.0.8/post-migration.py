@@ -26,13 +26,6 @@ def migrate(cr, version):
     if not version:
         return
 
-# 2016-02-10 19:22:51,442 7453 ERROR apps openerp.sql_db: Programming error: column c.hostname does not exist
-# LINE 3:                                        WHERE c.hostname = 'l...
-#                                                      ^
-# , in query SELECT c.logo_web, c.write_date
-#                                         FROM res_company c
-#                                        WHERE c.hostname = %s
-
     cr.execute("""
         SELECT c.id, c.hostname
         FROM res_company c

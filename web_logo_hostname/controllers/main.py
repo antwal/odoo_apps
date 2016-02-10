@@ -66,8 +66,10 @@ class Binary(openerp.addons.web.controllers.main.Binary):
                     if hostname:
                         cr.execute("""SELECT c.logo_web, c.write_date
                                         FROM res_company c
-                                       WHERE c.hostname = %s
-                               """, (hostname,))
+                                   LEFT JOIN res_company_hostname h
+                                          ON c.id = h.company_id
+                                       WHERE h.hostname = %s
+                        """, (hostname,))
                     else:
                         cr.execute("""SELECT c.logo_web, c.write_date
                                         FROM res_users u

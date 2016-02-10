@@ -22,6 +22,9 @@
 {
     'name': 'Logo for multi companies',
     'summary': 'Allow load company logo by domain name',
+    'description': """
+        Switch logo of company by domains name associated
+    """,
     'version': '8.0.1.0.8',
     'category': 'Technical Settings',
     'author': "Antolini Walter",
@@ -31,7 +34,8 @@
         'base', 'web',
     ],
     'data': [
-        'res/res_company_view.xml'
+        'res/res_company_view.xml',
+        'security/ir.model.access.csv'
     ],
     'qweb': [
     ],

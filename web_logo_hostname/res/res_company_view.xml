@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <!--<record id="view_company_tree" model="ir.ui.view">-->
-            <!--<field name="name">res.company.tree</field>-->
-            <!--<field name="model">res.company</field>-->
-            <!--<field name="inherit_id" ref="base.view_company_tree" />-->
-            <!--<field name="arch" type="xml">-->
-                <!--<field name="partner_id" position="after">-->
-                    <!--<field name="hostname"/>-->
-                <!--</field>-->
-            <!--</field>-->
-        <!--</record>-->
 
         <record id="view_company_form" model="ir.ui.view">
             <field name="name">res.company.form</field>
             <field name="model">res.company</field>
             <field name="inherit_id" ref="base.view_company_form" />
             <field name="arch" type="xml">
-                <xpath expr="//group//group[@string='Accounting']" position="after">
-                    <group>
-                        <group name="host_grp" string="Hostname">
-                            <field name="hostname_id" widget="one2many"/>
-                        </group>
+                <xpath expr="//page[@string='Configuration']//group" position="after">
+                    <newline/>
+                    <group name="host_grp" string="Hostnames associated">
+                        <field name="hostname_id" widget="one2many" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="hostname" />
+                            </tree>
+                        </field>
                     </group>
                 </xpath>
             </field>

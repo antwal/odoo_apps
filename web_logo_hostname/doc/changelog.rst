@@ -8,7 +8,10 @@ Changelog
 
 - Version 1.0.8
 
-  - Added Migration
+  - Added Migration to 1.0.8
+  - Allow multiple hostnames on each company
+  - Moved view to Configuration page
+  - Added separate model for hostname
 
 - Version 1.0.7
 
