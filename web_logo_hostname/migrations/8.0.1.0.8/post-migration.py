@@ -19,18 +19,42 @@
 ##############################################################################
 
 
+from openerp import SUPERUSER_ID
+from openerp.modules.registry import RegistryManager
+
+def _write_update(cr, model, table, values):
+    cr.execute("""
+        SELECT %s, %s
+        FROM %(table)s
+        WHERE %(field)s is not null % {
+          'table': table,
+          'field': values[1]
+        }
+    """, (values[0], values[1],))
+
+    if not cr.rowcount:
+        # Insert / Write
+        pass
+    else:
+        # Update
+        pass
+
 def migrate(cr, version):
     if not version:
         return
+
+    import pdb;pdb.set_trace()
+
+    registry = RegistryManager.get(cr.dbname)
 
     # Check table (8.0.1.0.6)
     cr.execute("""
         SELECT c.id, c.hostname_to_update
         FROM res_company c
     """)
-    hostnames = cr.fetchall()
+    if cr.rowcount:
+        hostnames = cr.fetchall()
 
-    if isinstance(hostnames, list):
         for hostname in hostnames:
             if not hostname[1]:
                 continue
@@ -39,20 +63,14 @@ def migrate(cr, version):
                 SELECT h.id, h.hostname_to_update
                 FROM res_company h
                 WHERE h.id = %d
-            """ % hostname[0])
+            """ % (hostname[0],))
             host = cr.fetchone()
 
             if host:
-                # Insert old value to new table
-                cr.execute("""
-                    INSERT INTO res_company_hostname(hostname, company_id)
-                    VALUES ('%s', %d)
-                """ % (hostname[1], host[0]))
+                _write_update(cr, registry['res.company.hostname'], 'res_company_hostname', host, ['hostname', 'company_id'])
 
         # Drop old column
         cr.execute("""
             ALTER TABLE res_company
             DROP COLUMN hostname_to_update
         """)
-    else:
-        return

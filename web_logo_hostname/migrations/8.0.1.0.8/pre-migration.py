@@ -22,18 +22,17 @@ def migrate(cr, version):
     if not version:
         return
 
+    import pdb;pdb.set_trace()
+
     # Check table (8.0.1.0.6)
     cr.execute("""
         SELECT c.id, c.hostname
         FROM res_company c
     """)
-    hostnames = cr.fetchall()
-
-    if isinstance(hostnames, list):
+    if cr.rowcount:
         # Migrate to 8.0.1.0.8
         cr.execute("""
             ALTER TABLE res_company
             RENAME COLUMN hostname TO hostname_to_update
         """)
-    else:
-        return
+
