@@ -13,6 +13,7 @@ Changelog
   - Moved view to Configuration page
   - Added separate model for hostnames
   - Fixed get http_host function
+  - Added translations (en_US, it)
 
 - Version 1.0.7
 
