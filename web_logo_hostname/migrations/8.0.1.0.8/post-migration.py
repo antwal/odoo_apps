@@ -24,7 +24,7 @@ def migrate(cr, version):
         return
 
     cr.execute("""
-        SELECT c.id, c.hostname
+        SELECT c.id, c.hostname_to_update
         FROM res_company c
     """)
     hostnames = cr.fetchall()
@@ -34,7 +34,7 @@ def migrate(cr, version):
             continue
 
         cr.execute("""
-            SELECT h.id, h.hostname
+            SELECT h.id, h.hostname_to_update
             FROM res_company h
             WHERE h.id = %d
         """ % hostname[0])
@@ -50,5 +50,5 @@ def migrate(cr, version):
     # Drop old column
     cr.execute("""
         ALTER TABLE res_company
-        DROP COLUMN hostname
+        DROP COLUMN hostname_to_update
     """)

@@ -21,3 +21,8 @@
 def migrate(cr, version):
     if not version:
         return
+
+    cr.execute("""
+        ALTER TABLE res_company
+        RENAME COLUMN hostname TO hostname_to_update
+    """)
