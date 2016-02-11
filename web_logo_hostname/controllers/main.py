@@ -52,21 +52,22 @@ class Binary(openerp.addons.web.controllers.main.Binary):
         if not dbname:
             response = http.send_file(placeholder(imgname))
         else:
-            env = request.httprequest.environ
-            # Get only domain/hostname without port
-            domain = env.get('HTTP_HOST', '').split(':')[0]
+            http_host = request.httprequest.environ.get("HTTP_HOST")
+            server_port = request.httprequest.environ.get("SERVER_PORT")
+
+            # wsgi test
+            if http_host:
+                hostname = http_host.replace(':'+server_port, '')
 
             try:
                 # create an empty registry
                 registry = openerp.modules.registry.Registry(dbname)
                 with registry.cursor() as cr:
-                    if domain:
+                    if hostname:
                         cr.execute("""SELECT c.logo_web, c.write_date
                                         FROM res_company c
-                                   LEFT JOIN res_company_hostname h
-                                          ON c.id = h.company_id
-                                       WHERE h.hostname = %s
-                        """, (domain,))
+                                       WHERE c.hostname = %s
+                               """, (hostname,))
                     else:
                         cr.execute("""SELECT c.logo_web, c.write_date
                                         FROM res_users u
