@@ -24,31 +24,34 @@ def migrate(cr, version):
         return
 
     cr.execute("""
-        SELECT c.id, c.hostname
+        SELECT c.id, c.hostname_to_update
         FROM res_company c
     """)
     hostnames = cr.fetchall()
 
-    for hostname in hostnames:
-        if not hostname[1]:
-            continue
+    if isinstance(hostnames, list):
+        for hostname in hostnames:
+            if not hostname[1]:
+                continue
 
-        cr.execute("""
-            SELECT h.id, h.hostname
-            FROM res_company h
-            WHERE h.id = %d
-        """ % hostname[0])
-        host = cr.fetchone()
-
-        if host:
-            # Insert old value to new table
             cr.execute("""
-                INSERT INTO res_company_hostname(hostname, company_id)
-                VALUES ('%s', %d)
-            """ % (hostname[1], host[0]))
+                SELECT h.id, h.hostname_to_update
+                FROM res_company h
+                WHERE h.id = %d
+            """ % hostname[0])
+            host = cr.fetchone()
 
-    # Drop old column
-    cr.execute("""
-        ALTER TABLE res_company
-        DROP COLUMN hostname
-    """)
+            if host:
+                # Insert old value to new table
+                cr.execute("""
+                    INSERT INTO res_company_hostname(hostname, company_id)
+                    VALUES ('%s', %d)
+                """ % (hostname[1], host[0]))
+
+        # Drop old column
+        cr.execute("""
+            ALTER TABLE res_company
+            DROP COLUMN hostname_to_update
+        """)
+    else:
+        return
