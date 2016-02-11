@@ -18,27 +18,24 @@
 #
 ##############################################################################
 
+def migrate(cr, version):
+    if not version:
+        return
 
-{
-    'name': 'Logo for multi companies',
-    'summary': 'Allow load company logo by domain name',
-    'description': """
-        Switch logo of company by domains name associated
-    """,
-    'version': '8.0.1.0.9',
-    'category': 'Technical Settings',
-    'author': "Antolini Walter",
-    'website': 'http://www.antwal.name',
-    'license': 'AGPL-3',
-    'depends': [
-        'base', 'web',
-    ],
-    'data': [
-        'res/res_company_view.xml',
-        'security/ir.model.access.csv'
-    ],
-    'qweb': [
-    ],
-    'installable': True,
-    'auto_install': False,
-}
+    # Check migration version 8.0.1.0.6 to 8.0.1.0.9
+    cr.execute("""
+        SELECT c.id, c.hostname
+        FROM res_company c
+    """)
+    check_hostname = cr.fetchall()
+
+    if check_hostname:
+        cr.execute("""
+            ALTER TABLE res_company
+            RENAME COLUMN hostname TO hostname_to_update
+        """)
+
+    # Check migration version 8.0.1.0.8 to 8.0.1.0.9 (fix error)
+    cr.execute("""
+        SELECT c.
+    """)

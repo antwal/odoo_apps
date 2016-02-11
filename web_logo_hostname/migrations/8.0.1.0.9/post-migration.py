@@ -19,26 +19,36 @@
 ##############################################################################
 
 
-{
-    'name': 'Logo for multi companies',
-    'summary': 'Allow load company logo by domain name',
-    'description': """
-        Switch logo of company by domains name associated
-    """,
-    'version': '8.0.1.0.9',
-    'category': 'Technical Settings',
-    'author': "Antolini Walter",
-    'website': 'http://www.antwal.name',
-    'license': 'AGPL-3',
-    'depends': [
-        'base', 'web',
-    ],
-    'data': [
-        'res/res_company_view.xml',
-        'security/ir.model.access.csv'
-    ],
-    'qweb': [
-    ],
-    'installable': True,
-    'auto_install': False,
-}
+def migrate(cr, version):
+    if not version:
+        return
+
+    cr.execute("""
+        SELECT c.id, c.hostname
+        FROM res_company c
+    """)
+    hostnames = cr.fetchall()
+
+    for hostname in hostnames:
+        if not hostname[1]:
+            continue
+
+        cr.execute("""
+            SELECT h.id, h.hostname
+            FROM res_company h
+            WHERE h.id = %d
+        """ % hostname[0])
+        host = cr.fetchone()
+
+        if host:
+            # Insert old value to new table
+            cr.execute("""
+                INSERT INTO res_company_hostname(hostname, company_id)
+                VALUES ('%s', %d)
+            """ % (hostname[1], host[0]))
+
+    # Drop old column
+    cr.execute("""
+        ALTER TABLE res_company
+        DROP COLUMN hostname
+    """)
