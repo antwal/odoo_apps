@@ -23,6 +23,7 @@ def migrate(cr, version):
     if not version:
         return
 
+    # Check table (8.0.1.0.6)
     cr.execute("""
         SELECT c.id, c.hostname_to_update
         FROM res_company c
