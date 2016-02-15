@@ -25,8 +25,8 @@
     'description': """
         Switch logo of company by domains name associated
     """,
-    'version': '8.0.1.0.9',
-    'category': 'Technical Settings',
+    'version': '8.0.1.1.0',
+    'category': 'Web',
     'author': "Antolini Walter",
     'website': 'http://www.antwal.name',
     'license': 'AGPL-3',
