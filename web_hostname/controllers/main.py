@@ -23,11 +23,22 @@ import functools
 from cStringIO import StringIO
 
 import openerp
+import logging
+
 from openerp import http
 from openerp.http import request
 from openerp.modules import get_module_resource
 
 db_monodb = http.db_monodb
+
+_logger = logging.getLogger(__name__)
+
+
+def getHostname():
+    env = request.httprequest.environ
+    _logger.debug('Hostname: ' + env.get('HTTP_HOST', ''))
+    return env.get('HTTP_HOST', '').split(':')[0]
+
 
 class Binary(openerp.addons.web.controllers.main.Binary):
 
@@ -52,9 +63,7 @@ class Binary(openerp.addons.web.controllers.main.Binary):
         if not dbname:
             response = http.send_file(placeholder(imgname))
         else:
-            env = request.httprequest.environ
-            # Get only domain/hostname without port
-            domain = env.get('HTTP_HOST', '').split(':')[0]
+            domain = getHostname()
 
             try:
                 # create an empty registry

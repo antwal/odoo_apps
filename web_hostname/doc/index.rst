@@ -1,5 +1,18 @@
-- Problems or requests on the modules?
+Configuration
+=============
 
-For each request, you can use the following link, Always insert the module name and version, with any log files and screenshots if available.
+To configure this module, you need to:
 
-* [Issues] (https://bitbucket.org/antwal/odoo_apps/issues)
+* Go to *Settings > Companies > Companies* and select you company, then in tab
+  *Configuration* add your domain names.
+
+
+Bug Tracker
+===========
+
+Bugs are tracked on `Github Issues <https://github.com/antwal/odoo_apps/issues>`_.
+
+In case of trouble, please check there if your issue has already been reported.
+If you spotted it first, help us smashing it by providing a detailed and
+welcomed feedback `here <https://github.com/antwal/odoo_apps/issues/new
+?body=module:web_hostname%0Aversion:8.0%0A%0A**Steps%20to%20reproduce**>`_.

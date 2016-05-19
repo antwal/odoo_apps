@@ -20,12 +20,13 @@
 
 
 {
-    'name': 'Logo for multi companies',
+    'name': 'Logo for multi company',
     'summary': 'Allow load company logo by domain name',
     'description': """
-        Switch logo of company by domains name associated
+Change logo of company associated by domains name
+=================================================
     """,
-    'version': '8.0.1.1.0',
+    'version': '8.0.1.2.0',
     'category': 'Web',
     'author': "Antolini Walter",
     'website': 'http://www.antwal.name',

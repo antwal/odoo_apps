@@ -20,6 +20,7 @@
 
 
 from openerp import models, fields, api, _
+from openerp.exceptions import ValidationError
 
 
 class res_company_hostname(models.Model):
@@ -28,6 +29,27 @@ class res_company_hostname(models.Model):
     # Limited to RFC 1035 - http://www.ietf.org/rfc/rfc1035.txt
     hostname = fields.Char(string='Hostname', size=64)
     company_id = fields.Many2one('res.company', string='Company')
+
+    @api.model
+    def get_company_id_by_hostname(self, host=None):
+        res = False
+
+        if host:
+            domain = [('hostname', '=', str(host))]
+            company_ids = self.search(domain)
+
+            if company_ids.company_id:
+                # INFO: Return always one company_id.id
+                res = company_ids.company_id.id
+
+        return res
+
+    @api.one
+    @api.constrains('hostname')
+    def _check_unique_constraint(self):
+        if len(self.search([( 'hostname', '=', str(self.hostname) )])) > 1:
+            raise ValidationError("Domain name already exists, it must be unique")
+
 
 class res_company(models.Model):
     _inherit = 'res.company'
