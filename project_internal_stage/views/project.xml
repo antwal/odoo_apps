@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Search Task -->
+    <record id="view_project_internal_stage_task_search" model="ir.ui.view">
+      <field name="name">project.internal.stage.task.search</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_search_form"/>
+      <field name="arch" type="xml">
+
+        <xpath expr="//filter[@name='unassigned']" position="after">
+          <filter string="Exclude Internal Stage" name="internal_stage"
+            domain="[('stage_id.internal_stage', '=', False)]"/>
+          </xpath>
+
+        </field>
+      </record>
+
+      <!-- Search issue -->
+      <record id="view_project_internal_stage_issue_search" model="ir.ui.view">
+        <field name="name">project.internal.stage.issue.search</field>
+        <field name="model">project.issue</field>
+        <field name="inherit_id" ref="project_issue.view_project_issue_filter"/>
+        <field name="arch" type="xml">
+
+          <xpath expr="//filter[@name='unassigned']" position="after">
+            <filter string="Exclude Internal Stage" name="internal_stage"
+              domain="[('stage_id.internal_stage', '=', False)]"/>
+            </xpath>
+
+          </field>
+        </record>
+
+      <!-- Stage task type form -->
+      <record id="view_project_internal_stage_task_type_form" model="ir.ui.view">
+        <field name="name">project.internal.stage.task.type.form</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit"/>
+        <field name="arch" type="xml">
+
+          <!-- Remove task_id single -->
+          <xpath expr="//field[@name='fold']" position="after">
+            <field name="internal_stage" />
+          </xpath>
+
+        </field>
+      </record>
+
+      <!-- Stage task type tree -->
+      <record id="view_project_internal_stage_task_type_tree" model="ir.ui.view">
+        <field name="name">project.internal.stage.task.type.tree</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_tree"/>
+        <field name="arch" type="xml">
+
+          <!-- Remove task_id single -->
+          <xpath expr="//field[@name='fold']" position="after">
+            <field name="internal_stage" />
+          </xpath>
+
+        </field>
+      </record>
+
+    </data>
+  </openerp>

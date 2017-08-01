@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    	<!-- Project Issue form -->
+    	<record id="view_intervention_type_project_issue_form" model="ir.ui.view">
+            <field name="name">intervention.type.project.issue.form</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+            <field name="arch" type="xml">
+
+            	<!-- Remove task_id single -->
+                <xpath expr="//field[@name='id']" position="after">
+                	<field name="extra_type_id" />
+				</xpath>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>

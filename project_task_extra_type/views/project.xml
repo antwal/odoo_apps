@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Project form -->
+    	<record id="view_issue_type_project_project_form" model="ir.ui.view">
+            <field name="name">issue.type.project.project.form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+
+            	<!-- Remove task_id single -->
+                <xpath expr="//field[@name='parent_id']" position="after">
+                	<field name="extra_type_id" />
+				</xpath>
+
+            </field>
+        </record>
+
+        <!-- Project Task form -->
+        <record id="view_issue_type_project_task_form" model="ir.ui.view">
+            <field name="name">issue.type.project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+
+            	<xpath expr="//field[@name='categ_ids']" position="after">
+            		<field name="extra_type_id"/>
+            	</xpath>
+
+            </field>
+        </record>
+
+
+    	<!--
+    	PROJECT TASK EXTRA TYPE
+    	-->
+        <record id="view_project_extra_type_tree" model="ir.ui.view">
+            <field name="name">project.extra.type.tree</field>
+            <field name="model">project.extra.type</field>
+            <field name="arch" type="xml">
+	            <tree string="Project Extra Type" version="7.0">
+	            	<field name="name"/>
+	            	<field name="code"/>
+	            	<field name="default"/>
+	            </tree>
+            </field>
+        </record>
+
+        <record id="view_project_extra_type_form" model="ir.ui.view">
+            <field name="name">project.extra.type.form</field>
+            <field name="model">project.extra.type</field>
+            <field name="arch" type="xml">
+            	<form string="Project Extra Type" version="7.0">
+	            	<group>
+	            	    <field name="name"/>
+		            	<field name="code"/>
+		            	<field name="default"/>
+	            	</group>
+	            </form>
+            </field>
+        </record>
+
+        <record id="action_project_extra_type" model="ir.actions.act_window">
+            <field name="name">Extra Type</field>
+            <field name="res_model">project.extra.type</field>
+            <field name="view_id" ref="view_project_extra_type_tree"/>
+        </record>
+
+        <menuitem id="menu_project_extra_type" name="Extra Type"
+            action="action_project_extra_type" parent="base.menu_definitions" sequence="50"
+            groups="base.group_no_one"/>
+
+
+
+    </data>
+</openerp>
