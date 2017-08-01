@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    	<menuitem id="menu_db_sync_main" name="Database Sync" parent="base.menu_custom" sequence="50" groups="group_db_sync_manager"/>
+		<menuitem id="menu_db_sync_main_config" name="Config" parent="menu_db_sync_main" sequence="100" groups="group_db_sync_manager"/>
+
+		<!--
+        Connection
+         -->
+        <record id="db_sync_connection_tree_view" model="ir.ui.view">
+            <field name="name">db.sync.connection.tree</field>
+            <field name="model">db.sync.connection</field>
+            <field name="arch" type="xml">
+
+                <tree string="Connection" version="7.0">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="host"/>
+                    <field name="database_name"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="db_sync_connection_form_view" model="ir.ui.view">
+            <field name="name">db.sync.connection.form</field>
+            <field name="model">db.sync.connection</field>
+            <field name="arch" type="xml">
+                <form string="Connection" version="7.0">
+                	<group>
+	                	<group string="Host">
+	                		<field name="name"/>
+		                    <field name="type"/>
+		                    <field name="host"/>
+		                    <field name="host_user_id"/>
+	                	</group>
+	                	<group>
+	                		<field name="active"/>
+	                	</group>
+                	</group>
+                	<newline/>
+                    <group  string="Database">
+	                    <field name="database_name"/>
+	                    <field name="database_user"/>
+	                    <field name="database_password"/>
+                    </group>
+                    <newline/>
+                    <notebook>
+                    	<page string="Models">
+		                    <group>
+		                    	<field name="model_ids" nolabel="1">
+			                    	<tree>
+			                    		<field name="model_id"/>
+			                    		<field name="name"/>
+			                    		<field name="active"/>
+			                    	</tree>
+		                    	</field>
+		                    </group>
+	                    </page>
+	                    <page string="Counters">
+		                    <group>
+		                    	<field name="counter_ids" nolabel="1">
+		                    		<tree>
+			                    		<field name="model_id"/>
+			                    		<field name="last_ref_imported"/>
+			                    		<field name="last_ref_exported"/>
+		                    		</tree>
+		                    	</field>
+		                    </group>
+	                    </page>
+	                    <page string="Logs">
+		                    <group>
+		                    	<field name="log_ids" nolabel="1">
+		                    		<field name="name"/>
+		                    	</field>
+		                    </group>
+	                    </page>
+	                    <page string="Elements">
+		                    <group>
+		                    	<field name="element_ids" nolabel="1">
+			                    	<tree>
+			                    		<field name="model_id"/>
+			                    		<field name="description"/>
+			                    		<field name="host_id"/>
+			                    		<field name="host_id"/>
+			                    	</tree>
+		                    	</field>
+		                    </group>
+	                    </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="db_sync_connection_action" model="ir.actions.act_window">
+			<field name="name">Connection</field>
+			<field name="type">ir.actions.act_window</field>
+	        <field name="res_model">db.sync.connection</field>
+	        <field name="view_type">form</field>
+	        <field name="view_mode">tree,form</field>
+	        <field name="view_id" ref="db_sync_connection_tree_view"/>
+	        <field name="help"></field>
+    	</record>
+
+    	<menuitem action="db_sync_connection_action" id="menu_db_sync_connection" parent="menu_db_sync_main_config"/>
+
+    	<!--
+    	Model
+    	 -->
+    	<record id="db_sync_model_form_view" model="ir.ui.view">
+            <field name="name">db.sync.model.form</field>
+            <field name="model">db.sync.model</field>
+            <field name="arch" type="xml">
+                <form string="Model" version="7.0">
+                	<group>
+	                	<group>
+	                		<field name="model_id" on_change="on_change_model_id(model_id, context)"/>
+		                    <field name="name"/>
+	                	</group>
+	                	<group>
+	                		<field name="active"/>
+	                	</group>
+                	</group>
+                	<group>
+                		<group>
+                			<field name="fields_sync"/>
+                		</group>
+                		<group>
+                			<field name="sql_where"/>
+                		</group>
+                		<group>
+                			<field name="sql_constraints"/>
+                		</group>
+                	</group>
+                	<newline/>
+                    <notebook>
+                    	<page string="Models Relation">
+		                    <group>
+		                    	<field name="model_relation_ids" nolabel="1">
+			                    	<tree>
+			                    		<field name="sequence"/>
+			                    		<field name="model_id"/>
+			                    		<field name="fields_sync"/>
+			                    		<field name="sql_where"/>
+			                    		<field name="sql_constraints"/>
+			                    		<field name="after_model"/>
+			                    		<field name="active"/>
+			                    	</tree>
+			                    	<form>
+			                    		<field name="sequence"/>
+			                    		<field name="model_id"/>
+			                    		<field name="fields_sync"/>
+			                    		<field name="sql_where"/>
+			                    		<field name="sql_constraints"/>
+			                    		<field name="after_model"/>
+			                    		<field name="active"/>
+			                    	</form>
+		                    	</field>
+		                    </group>
+	                    </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <!--
+    	log
+    	 -->
+    	<record id="db_sync_log_form_view" model="ir.ui.view">
+            <field name="name">db.sync.log.form</field>
+            <field name="model">db.sync.log</field>
+            <field name="arch" type="xml">
+                <form string="Model" version="7.0">
+                	<group>
+	                	<group>
+	                		<field name="date"/>
+	                	</group>
+	                	<group>
+	                	</group>
+                	</group>
+                	<newline/>
+                    <notebook>
+                    	<page string="Lines">
+		                    <group>
+		                    	<field name="line_ids" nolabel="1">
+			                    	<tree>
+			                    		<field name="model_id"/>
+			                    		<field name="description"/>
+			                    	</tree>
+		                    	</field>
+		                    </group>
+	                    </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+   </data>
+</openerp>

@@ -1,0 +1,9 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+
+group_db_sync_connection_manager,db_sync_connection manager,model_db_sync_connection,group_db_sync_manager,1,1,1,1
+group_db_sync_model_relation_manager,db_sync_model_relation manager,model_db_sync_model_relation,group_db_sync_manager,1,1,1,1
+group_db_sync_model_manager,db_sync_model manager,model_db_sync_model,group_db_sync_manager,1,1,1,1
+group_db_sync_log_manager,db_sync_log manager,model_db_sync_log,group_db_sync_manager,1,1,1,1
+group_db_sync_log_line_manager,db_sync_log_line manager,model_db_sync_log_line,group_db_sync_manager,1,1,1,1
+group_db_sync_model_counter_manager,db_sync_model_counter manager,model_db_sync_model_counter,group_db_sync_manager,1,1,1,1
+group_db_sync_model_element_manager,db_sync_model_element manager,model_db_sync_model_element,group_db_sync_manager,1,1,1,1

@@ -1,0 +1,4 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+
+sale_brand_manager,sale_brand manager,model_sale_brand,base.group_user,1,0,0,0
+sale_brand_manager,sale_brand manager,model_sale_brand,base.group_sale_manager,1,1,1,1
