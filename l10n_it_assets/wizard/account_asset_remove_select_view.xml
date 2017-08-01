@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+   	<!--
+        Wizard 
+     -->
+      <record model="ir.ui.view" id="wizard_account_asset_remove_select_form">
+        <field name="name">account.asset.remove.select.form</field>
+        <field name="model">account.asset.remove.select</field>
+        <field name="arch" type="xml">
+          <form string="Select Move for Remove Asset" version="7.0">
+            <group colspan="4" col="4">
+              <field name="invoice_line_ids" nolabel="1">
+              	<tree string="Invoice Lines">
+	              	<field name="invoice_id"/>
+	              	<field name="date_invoice"/>
+	              	<field name="name"/>
+	              	<field name="account_id"/>
+	              	<field name="quantity"/>
+	              	<field name="price_unit"/>
+	              	<field name="discount"/>
+	              	<field name="price_subtotal" sum="Total"/>
+              	</tree>
+              </field>
+              <newline/>
+            </group>
+            <newline/>
+            <separator colspan="4"/>
+            <footer>
+              <button string="Continue" name="continue_remove" type="object" class="oe_highlight"/>
+              or
+              <button string="Cancel" class="oe_link" special="cancel"/>
+            </footer>
+          </form>
+        </field>
+      </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,169 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* l10n_it_vat_registries
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-16 16:40+0000\n"
+"PO-Revision-Date: 2014-04-16 16:40+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: field:wizard.registro.iva,type:0
+#. module: l10n_it_vat_registries
+msgid "Layout"
+msgstr "Layout"
+
+#: model:ir.model,name:l10n_it_vat_registries.model_account_tax_code
+#. module: l10n_it_vat_registries
+msgid "Tax Code"
+msgstr "Codice imposta"
+
+#: model:ir.actions.report.xml,name:l10n_it_vat_registries.registro_iva_vendite_report_id
+#. module: l10n_it_vat_registries
+msgid "Customer Invoices VAT Registry"
+msgstr "Registro IVA Fatture Emesse"
+
+#: model:ir.model,name:l10n_it_vat_registries.model_wizard_registro_iva
+#. module: l10n_it_vat_registries
+msgid "wizard.registro.iva"
+msgstr "wizard.registro.iva"
+
+#: help:wizard.registro.iva,period_ids:0
+#. module: l10n_it_vat_registries
+msgid "Select periods you want retrieve documents from"
+msgstr "Select periods you want retrieve documents from"
+
+#: view:wizard.registro.iva:0
+#. module: l10n_it_vat_registries
+msgid "Print"
+msgstr "Stampa"
+
+#: selection:wizard.registro.iva,type:0
+#. module: l10n_it_vat_registries
+msgid "Supplier Invoices"
+msgstr "Fatture ricevute"
+
+#: model:ir.actions.report.xml,name:l10n_it_vat_registries.registro_iva_acquisti_report_id
+#. module: l10n_it_vat_registries
+msgid "Supplier Invoices VAT Registry"
+msgstr "Registro IVA Fatture Ricevute"
+
+#: model:ir.actions.act_window,name:l10n_it_vat_registries.action_registro_iva
+#. module: l10n_it_vat_registries
+msgid "VAT Registry"
+msgstr "Registro IVA"
+
+#: field:account.tax.code,is_base:0
+#. module: l10n_it_vat_registries
+msgid "Is base"
+msgstr "Is base"
+
+#: model:ir.ui.menu,name:l10n_it_vat_registries.menu_registro_iva
+#. module: l10n_it_vat_registries
+msgid "VAT Registries"
+msgstr "Registri IVA"
+
+#: view:wizard.registro.iva:0
+#. module: l10n_it_vat_registries
+msgid "Tax Journal"
+msgstr "Registro IVA"
+
+#: view:wizard.registro.iva:0
+#: field:wizard.registro.iva,journal_ids:0
+#. module: l10n_it_vat_registries
+msgid "Journals"
+msgstr "Sezionali"
+
+#: field:wizard.registro.iva,fiscal_line_base:0
+#. module: l10n_it_vat_registries
+msgid "Last printed line"
+msgstr "Ultima riga stampata"
+
+#: help:wizard.registro.iva,journal_ids:0
+#. module: l10n_it_vat_registries
+msgid "Select journals you want retrieve documents from"
+msgstr "Selezionare i sezionali da cui si vuole ottenere i documenti"
+
+#: selection:wizard.registro.iva,type:0
+#. module: l10n_it_vat_registries
+msgid "Corrispettivi"
+msgstr "Corrispettivi"
+
+#: selection:wizard.registro.iva,order:0
+#. module: l10n_it_vat_registries
+msgid "Journal, Data, Number"
+msgstr "Sezionale, Data, Numero"
+
+#: field:wizard.registro.iva,fiscal_page_base:0
+#. module: l10n_it_vat_registries
+msgid "Last printed page"
+msgstr "Ultima pagina stampata"
+
+#: help:account.tax.code,is_base:0
+#. module: l10n_it_vat_registries
+msgid "This tax code is used for base amounts (field used by VAT registries)"
+msgstr "This tax code is used for base amounts (field used by VAT registries)"
+
+#: field:wizard.registro.iva,order:0
+#. module: l10n_it_vat_registries
+msgid "Order"
+msgstr "Ordinamento"
+
+#: help:wizard.registro.iva,tax_sign:0
+#. module: l10n_it_vat_registries
+msgid "Use -1 you have negative tax amounts and you want to print them prositive"
+msgstr "Use -1 you have negative tax amounts and you want to print them prositive"
+
+#: field:account.tax.code,exclude_from_registries:0
+#. module: l10n_it_vat_registries
+msgid "Exclude from VAT registries"
+msgstr "Exclude from VAT registries"
+
+#: selection:wizard.registro.iva,type:0
+#. module: l10n_it_vat_registries
+msgid "Customer Invoices"
+msgstr "Fatture emesse"
+
+#: model:ir.actions.report.xml,name:l10n_it_vat_registries.registro_iva_corrispettivi_report_id
+#. module: l10n_it_vat_registries
+msgid "Corrispettivi VAT Registry"
+msgstr "Registro IVA Corrispettivi"
+
+#: view:wizard.registro.iva:0
+#: field:wizard.registro.iva,period_ids:0
+#. module: l10n_it_vat_registries
+msgid "Periods"
+msgstr "Periods"
+
+#: field:wizard.registro.iva,tax_sign:0
+#. module: l10n_it_vat_registries
+msgid "Tax amount sign"
+msgstr "Tax amount sign"
+
+#: view:wizard.registro.iva:0
+#. module: l10n_it_vat_registries
+msgid "Cancel"
+msgstr "Annulla"
+
+#: field:wizard.registro.iva,message:0
+#. module: l10n_it_vat_registries
+msgid "Message"
+msgstr "Messaggio"
+
+#: view:wizard.registro.iva:0
+#. module: l10n_it_vat_registries
+msgid "or"
+msgstr "or"
+
+#: selection:wizard.registro.iva,order:0
+#. module: l10n_it_vat_registries
+msgid "Date, Number"
+msgstr "Data, Numero"
+

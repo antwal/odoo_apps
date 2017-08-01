@@ -1,0 +1,145 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* l10n_it_assets_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-19 09:31+0000\n"
+"PO-Revision-Date: 2015-11-19 09:31+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: view:website:l10n_it_assets_report.report_assets_report_registry
+#. module: l10n_it_assets_report
+msgid "Ammortamento"
+msgstr "Ammortamento"
+
+#: field:assets.report.registry,category_id:0
+#. module: l10n_it_assets_report
+msgid "Asset Category"
+msgstr "Categoria immobilizzazione"
+
+#: field:assets.report.registry,date_end:0
+#. module: l10n_it_assets_report
+msgid "Asset End Date"
+msgstr "Data fine"
+
+#: field:assets.report.registry,asset_id:0
+#. module: l10n_it_assets_report
+msgid "Asset Name"
+msgstr "Immobilizzazione"
+
+#: field:assets.report.registry,date_start:0
+#. module: l10n_it_assets_report
+msgid "Asset Start Date"
+msgstr "Data inizio"
+
+#: view:website:l10n_it_assets_report.report_assets_report_registry
+#. module: l10n_it_assets_report
+msgid "Bene"
+msgstr "Bene"
+
+#: view:assets.report.registry:l10n_it_assets_report.view_form_assets_report_registry
+#. module: l10n_it_assets_report
+msgid "Cancel"
+msgstr "Cancel"
+
+#: view:website:l10n_it_assets_report.report_assets_report_registry
+#. module: l10n_it_assets_report
+msgid "Categoria"
+msgstr "Categoria"
+
+#: field:assets.report.registry,create_uid:0
+#. module: l10n_it_assets_report
+msgid "Created by"
+msgstr "Created by"
+
+#: field:assets.report.registry,create_date:0
+#. module: l10n_it_assets_report
+msgid "Created on"
+msgstr "Created on"
+
+#: view:website:l10n_it_assets_report.report_assets_report_registry
+#. module: l10n_it_assets_report
+msgid "Data"
+msgstr "Data"
+
+#: view:website:l10n_it_assets_report.report_assets_report_registry
+#. module: l10n_it_assets_report
+msgid "Data acquisto"
+msgstr "Data acquisto"
+
+#: field:assets.report.registry,id:0
+#: field:report.l10n_it_assets_report.report_assets_report_registry,id:0
+#. module: l10n_it_assets_report
+msgid "ID"
+msgstr "ID"
+
+#: field:assets.report.registry,write_uid:0
+#. module: l10n_it_assets_report
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#: field:assets.report.registry,write_date:0
+#. module: l10n_it_assets_report
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#: code:addons/l10n_it_assets_report/wizard/assets_report_registry.py:72
+#. module: l10n_it_assets_report
+#, python-format
+msgid "No documents found in the current selection"
+msgstr "No documents found in the current selection"
+
+#: view:website:l10n_it_assets_report.internal_layout
+#. module: l10n_it_assets_report
+msgid "Pag:"
+msgstr "Pag:"
+
+#: view:website:l10n_it_assets_report.report_assets_report_registry
+#. module: l10n_it_assets_report
+msgid "Prezzo acquisto"
+msgstr "Prezzo acquisto"
+
+#: view:assets.report.registry:l10n_it_assets_report.view_form_assets_report_registry
+#. module: l10n_it_assets_report
+msgid "Print"
+msgstr "Print"
+
+#: model:ir.actions.act_window,name:l10n_it_assets_report.action_assets_report_registry
+#: model:ir.ui.menu,name:l10n_it_assets_report.menu_assets_report_registry
+#. module: l10n_it_assets_report
+msgid "Print assets registry"
+msgstr "Stampa Registro Beni Ammortizzabili"
+
+#: model:ir.actions.report.xml,name:l10n_it_assets_report.report_assets_report_registry_action
+#. module: l10n_it_assets_report
+msgid "Report Assets Registry"
+msgstr "Stampa Registro Beni Ammortizzabili"
+
+#: view:website:l10n_it_assets_report.report_assets_report_registry
+#. module: l10n_it_assets_report
+msgid "Valore Fondo"
+msgstr "Valore Fondo"
+
+#: view:website:l10n_it_assets_report.report_assets_report_registry
+#. module: l10n_it_assets_report
+msgid "Valore Residuo"
+msgstr "Valore Residuo"
+
+#: view:website:l10n_it_assets_report.report_assets_report_registry
+#. module: l10n_it_assets_report
+msgid "Valore Storico Immobilizzazione"
+msgstr "Valore Storico Immobilizzazione"
+
+#: view:website:l10n_it_assets_report.report_assets_report_registry
+#. module: l10n_it_assets_report
+msgid "Variazioni"
+msgstr "Variazioni"
+

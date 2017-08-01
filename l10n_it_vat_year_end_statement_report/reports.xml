@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <report
+            auto="False"
+            id="print_year_vat_period_end_statement"
+            model="wizard.year.statement"
+            name="vat.year.end.statement"
+            file="l10n_it_vat_year_end_statement_report/report/vat_end_statement.mako"
+            string="Year VAT Statement Summary"
+            report_type="webkit"
+            webkit_header="ir_header_webkit_year_vat_statement"/>
+
+    </data>
+</openerp>

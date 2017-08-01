@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+    	<record id="ir_header_webkit_vat_period_end_statement" model="ir.header_webkit">
+            <field name="orientation">Portrait</field>
+            <field name="format">A4</field>
+            <field name="margin_top">50</field>
+            <field name="html"><![CDATA[<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
+        <script>
+            function subst() {
+            var vars={};
+            var x=document.location.search.substring(1).split('&');
+            for(var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
+            var x=['frompage','topage','page','webpage','section','subsection','subsubsection'];
+            for(var i in x) {
+            var y = document.getElementsByClassName(x[i]);
+            for(var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
+                }
+            }
+        </script>
+    </head>
+    <body style="border:0; margin: 0;" onload="subst()">
+    <% setLang(company.partner_id.lang or "en_US") %>
+    <h3>${company.partner_id.name or ''|entity}</h3>
+    <table style="border-bottom: 4px solid black; width: 100%; padding-bottom: 8px">
+    <tr>
+    <td>
+    <div>${company.partner_id.street or ''|entity}</div>
+    <div>${company.partner_id.street2 or ''|entity}</div>
+    <div>${company.partner_id.zip or ''|entity}</div>
+    <div>${company.partner_id.city or ''|entity}</div>
+    <div>${company.partner_id.province and company.partner_id.province.code or ''|entity}</div>
+    </td>
+    <td>
+    <div>P. IVA: ${company.partner_id.vat or ''|entity}</div>
+    <div>Codice Fiscale: ${company.partner_id.fiscalcode or ''|entity}</div>
+
+    </td>
+    </tr>
+    </table>
+    <br/>
+    </body>
+</html>]]>
+</field>
+            <field name="footer_html"><![CDATA[<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
+        <script>
+            function subst() {
+            var vars={};
+            var x=document.location.search.substring(1).split('&');
+            for(var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
+            var x=['frompage','topage','page','webpage','section','subsection','subsubsection'];
+            for(var i in x) {
+            var y = document.getElementsByClassName(x[i]);
+            for(var j=0; j<y.length; ++j) {
+            if(x[i] == 'page') {y[j].textContent = eval(vars[x[i]]) + ${objects[0].print_page_from -1};}
+            else{y[j].textContent = vars[x[i]];}
+            }
+
+                }
+            }
+        </script>
+    </head>
+    <body style="border:0; margin: 0;" onload="subst()">
+        <table style="border-top: 1px solid black; width: 100%">
+            <tr >
+                <td style="text-align:right;font-size:12;" width="95%">Page ${objects[0].print_page_year or ''|entity}/<span class="page"/></td><td style="text-align:left;font-size:12;"></td>
+            </tr>
+        </table>
+    </body>
+</html>]]></field><field name="css" ><![CDATA[
+tr {
+    page-break-inside: avoid;
+}
+thead{
+    display: table-header-group; /* http://code.google.com/p/wkhtmltopdf/issues/detail?id=9#c8 */
+}
+]]> </field>
+            <field  name="name">VAT Statement Summary</field>
+        </record>
+        
+
+        <report
+            auto="False"
+            id="print_vat_period_end_statement"
+            model="account.vat.period.end.statement"
+            name="account.print.vat.period.end.statement"
+            file="account_vat_period_end_statement/report/vat_period_end_statement.mako"
+            string="VAT Statement Summary"
+            webkit_header = "ir_header_webkit_vat_period_end_statement"
+            report_type="webkit" />
+
+    </data>
+</openerp>
+

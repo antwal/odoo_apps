@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--<record id="report_assets_report_registry_a4_portrait" model="report.paperformat">-->
+            <!--<field name="name">Italian Assets Registry Reports A4 Portrait</field>-->
+            <!--<field name="default" eval="True" />-->
+            <!--<field name="format">A4</field>-->
+            <!--<field name="page_height">0</field>-->
+            <!--<field name="page_width">0</field>-->
+            <!--<field name="orientation">Portrait</field>-->
+            <!--<field name="margin_top">35</field>-->
+            <!--<field name="margin_bottom">15</field>-->
+            <!--<field name="margin_left">5</field>-->
+            <!--<field name="margin_right">5</field>-->
+            <!--<field name="header_line" eval="False" />-->
+            <!--<field name="header_spacing">30</field>-->
+            <!--<field name="dpi">90</field>-->
+        <!--</record>-->
+
+        <template id="l10n_it_assets_report.internal_layout">
+            <!-- Multicompany -->
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+
+            <div class="header">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <h3><span t-esc="company.name"/></h3>
+                        <span t-esc="company.street" class=""/><br/>
+                        <span t-esc="company.zip" class=""/> - <span t-esc="company.city" class=""/> - <span t-esc="company.state_id.code" class=""/><br/>
+                    </div>
+                    <div class="col-xs-4 col-xs-offset-4 text-right">
+                        <h3 t-esc="title"/>
+                    </div>
+                </div>
+            </div>
+            <br/>
+
+            <t t-raw="0" />
+
+            <div class="footer">
+                <div class="row">
+                    <div class="col-xs-4">
+
+                    </div>
+                    <div class="col-xs-4 col-xs-offset-4 text-right">
+                        <ul class="list-inline">Pag:
+                            <li><span class="page"/></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="report_assets_report_registry">
+            <t t-call="report.html_container">
+                <t t-set="title" t-value="'Registro Beni Ammortizzabili'"/>
+                <t t-call="l10n_it_assets_report.internal_layout">
+                    <div class="page">
+                        <t t-foreach="get_assets(asset_ids)" t-as="asset">
+                            <!-- Info Asset //-->
+                            <table cellspacing="0" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Bene</th>
+                                        <th>Data acquisto</th>
+                                        <th>Prezzo acquisto</th>
+                                        <th>Categoria</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td t-esc="asset.name"/>
+                                        <td t-esc="formatLang(asset.date_start, date=True)"/>
+                                        <td t-esc="formatLang(purchaseValue(asset.purchase_value))"/>
+                                        <td t-esc="asset.parent_id.name"/>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- Lines Asset //-->
+                            <table cellspacing="0" class="table table-striped">
+                                <thead>
+                                    <tr style="page-break-inside: avoid;">
+                                        <th class="left_without_line">Data</th>
+                                        <th class="right_without_line">Variazioni</th>
+                                        <th class="right_without_line">Valore Storico Immobilizzazione</th>
+                                        <th class="right_without_line">Ammortamento</th>
+                                        <th class="right_without_line">Valore Residuo</th>
+                                        <th class="right_without_line">Valore Fondo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="get_lines(data, asset)" t-as="line">
+                                        <tr style="border:1px solid #fff; page-break-inside: avoid;">
+                                            <td class="left_without_line_bold"><div style="page-break-inside: avoid;" class="pull-right" t-esc="formatLang(line.line_date, date=True)"/></td>
+                                            <td class="left_without_line_bold"><div style="page-break-inside: avoid;" class="pull-right" t-esc="formatLang(line.amount_variation)"/></td>
+                                            <td class="left_without_line_bold"><div style="page-break-inside: avoid;" class="pull-right" t-esc="formatLang(line.asset_historical_value)"/></td>
+                                            <td class="right_without_line_bold"><div style="page-break-inside: avoid;" class="pull-right" t-esc="formatLang(line.amount)"/></td>
+                                            <td class="left_without_line_bold"><div style="page-break-inside: avoid;" class="pull-right" t-esc="formatLang(line.remaining_value)"/></td>
+                                            <td class="left_without_line_bold"><div style="page-break-inside: avoid;" class="pull-right" t-esc="formatLang(line.accumulated_depreciation)"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</openerp>

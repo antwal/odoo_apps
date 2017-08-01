@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+account_asset_depreciation_line_fiscal_user,account.asset.depreciation.line.fiscal,model_account_asset_depreciation_line_fiscal,base.group_user,1,0,0,0
+account_asset_depreciation_line_fiscal_manager,account.asset.depreciation.line.fiscal,model_account_asset_depreciation_line_fiscal,account.group_account_manager,1,1,1,1
+asset_property_user,account.asset.property,model_account_asset_property,base.group_user,1,0,0,0
+asset_property_manager,account.asset.property,model_account_asset_property,account.group_account_manager,1,1,1,1
+asset_property_line_user,account.asset.property.line,model_account_asset_property_line,base.group_user,1,0,0,0
+asset_property_line_manager,account.asset.property.line,model_account_asset_property_line,account.group_account_manager,1,1,1,1
