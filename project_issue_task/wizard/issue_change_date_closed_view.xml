@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record id="wizard_issue_change_date_closed" model="ir.ui.view">
+      <field eval="1" name="priority"/>
+      <field name="name">wizard.issue.change.date.closed</field>
+      <field name="model">wizard.issue.change.date.closed</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Change Date" version="7.0">
+          <group  col="4">
+            <field name="date_closed" />
+          </group>
+
+          <button name="change_date_closed" string="Change" type="object" icon="gtk-execute" />
+        </form>
+      </field>
+    </record>
+
+    <record id="action_issue_change_date_closed" model="ir.actions.act_window">
+      <field name="name">Change Date Closed</field>
+      <field name="res_model">wizard.issue.change.date.closed</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="wizard_issue_change_date_closed"/>
+      <field name="help">Change Date closed of Issue</field>
+      <field name="target">new</field>
+    </record>
+
+  </data>
+</openerp>

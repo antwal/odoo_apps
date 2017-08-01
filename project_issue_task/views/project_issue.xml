@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Issue form -->
+    <record id="view_pit_issue_form" model="ir.ui.view">
+      <field name="name">pit.issue.form</field>
+      <field name="model">project.issue</field>
+      <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+      <field name="arch" type="xml">
+
+        <xpath expr="//field[@name='stage_id']" position="before">
+          <button name="action_create_task" string="Create Task" type="object" class="oe_highlight"
+            groups="base.group_user"/>
+            <button name="action_set_stage_task_completed" string="Set Tasks to complete" type="object"
+              groups="base.group_user"/>
+            </xpath>
+
+            <!-- Widget button tasks -->
+            <xpath expr="//label[@for='name']" position="after">
+              <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
+                <button class="oe_inline oe_stat_button" type="object"
+                  name="action_show_issue_tasks" icon="fa-tasks">
+                  <field string="Tasks" name="task_count" widget="statinfo"/>
+                </button>
+              </div>
+            </xpath>
+
+            <!-- Remove task_id single -->
+            <xpath expr="//field[@name='task_id']" position="replace">
+            </xpath>
+            <xpath expr="//field[@name='progress']" position="replace">
+            </xpath>
+
+
+            <!-- Add multiple tasks -->
+            <xpath expr="//page[@string='Description']" position="after">
+              <page name="Tasks" string="Tasks" groups="base.group_user">
+                <field name="task_ids" />
+              </page>
+            </xpath>
+
+            <xpath expr="//field[@name='day_open']/../.." position="before">
+              <group string="Closed Data">
+                <group>
+                  <field name="date_closed" />
+                </group>
+                <group>
+                  <button name="%(action_issue_change_date_closed)d"
+                    type='action' string='Change date' icon="gtk-execute" />
+                  </group>
+                </group>
+              </xpath>
+
+            </field>
+          </record>
+
+          <!-- Issue kanban -->
+          <record id="view_pit_issue_kanban" model="ir.ui.view">
+            <field name="name">pit.issue.kanban</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_kanban_view"/>
+            <field name="arch" type="xml">
+
+              <xpath expr="//field[@name='message_summary']" position="after">
+                <field name="ticket_ref" />
+              </xpath>
+
+              <xpath expr="//div[@class='oe_kanban_bottom_right']" position="after">
+                <div class="oe_kanban_bottom_left">
+                  <span><strong>Ticket Ref:</strong></span>
+                  <field name="ticket_ref" />
+                </div>
+              </xpath>
+            </field>
+          </record>
+
+        </data>
+      </openerp>

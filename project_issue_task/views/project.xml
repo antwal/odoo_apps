@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Task form -->
+    <record id="view_pit_task_form2" model="ir.ui.view">
+      <field name="name">pit.task.form2</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field name="arch" type="xml">
+
+        <xpath expr="//field[@name='categ_ids']" position="after">
+          <field name="issue_id" />
+          <field name="issue_ticket_ref" />
+        </xpath>
+
+        <xpath expr="//field[@name='date_last_stage_update']" position="after">
+          <field name="sync_stage_issue" />
+        </xpath>
+
+        <xpath expr="//group" position="after">
+          <group>
+            <field name="worksheet_attachment_ids" widget="many2many_binary"/>
+          </group>
+        </xpath>
+
+
+
+      </field>
+    </record>
+
+    <!-- Task search -->
+    <record id="view_pit_task_search_form" model="ir.ui.view">
+      <field name="name">pit.task.search.form</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_search_form"/>
+      <field name="arch" type="xml">
+
+        <xpath expr="//field[@name='stage_id']" position="after">
+          <field name="issue_id" />
+        </xpath>
+
+      </field>
+    </record>
+
+    <!-- Task kanban -->
+    <record id="view_pit_task_kanban" model="ir.ui.view">
+      <field name="name">pit.task.kanban</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_kanban"/>
+      <field name="arch" type="xml">
+
+        <xpath expr="//field[@name='categ_ids']" position="after">
+          <field name="issue_ticket_ref" />
+          <field name="issue_id" />
+        </xpath>
+
+        <xpath expr="//div[@class='oe_kanban_bottom_right']" position="after">
+          <div class="oe_kanban_bottom_left">
+            <span><strong>Ticket Ref:</strong></span>
+            <field name="issue_ticket_ref" />
+            <br/>
+            <field name="issue_id" />
+          </div>
+        </xpath>
+      </field>
+    </record>
+
+
+  </data>
+</openerp>

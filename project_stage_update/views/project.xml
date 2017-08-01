@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!-- Stage task type form -->
+    <record id="view_project_stage_update_date_end_task_type_form" model="ir.ui.view">
+      <field name="name">project.stage.update.date.end.task.type.form</field>
+      <field name="model">project.task.type</field>
+      <field name="inherit_id" ref="project.task_type_edit"/>
+      <field name="arch" type="xml">
+
+        <!-- Remove task_id single -->
+        <xpath expr="//field[@name='fold']" position="after">
+          <field name="update_date_end" />
+        </xpath>
+
+      </field>
+    </record>
+
+    <!-- Stage task type tree -->
+    <record id="view_project_stage_update_date_end_task_type_tree" model="ir.ui.view">
+      <field name="name">project.stage.update.date.end.task.type.tree</field>
+      <field name="model">project.task.type</field>
+      <field name="inherit_id" ref="project.task_type_tree"/>
+      <field name="arch" type="xml">
+
+        <!-- Remove task_id single -->
+        <xpath expr="//field[@name='fold']" position="after">
+          <field name="update_date_end" />
+        </xpath>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>
